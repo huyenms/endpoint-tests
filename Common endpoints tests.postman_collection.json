@@ -1,0 +1,642 @@
+{
+	"info": {
+		"_postman_id": "536f4842-2726-48bc-b988-0e3387a8b03d",
+		"name": "Common endpoints tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23329775"
+	},
+	"item": [
+		{
+			"name": "Tenant agnostic",
+			"item": [
+				{
+					"name": "/common/devtools",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/devtools",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"devtools"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/healthinfo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/healthinfo",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"healthinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/healthinfo/cdnmanifest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/healthinfo/cdnmanifest",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"healthinfo",
+								"cdnmanifest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/healthinfo/cdnmanifest Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/insider",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"insider"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/userrealm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/userrealm",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"userrealm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/msauserrealm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/msauserrealm",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"msauserrealm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/regionalcacheauthkeys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/regionalcacheauthkeys",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"regionalcacheauthkeys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/discovery/instance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/discovery/instance",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"discovery",
+								"instance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/discovery/keys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/discovery/keys",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"discovery",
+								"keys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/discovery/rootkeys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/discovery/rootkeys",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"discovery",
+								"rootkeys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/discovery/partitionedtokensigningkeys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/discovery/partitionedtokensigningkeys",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"discovery",
+								"partitionedtokensigningkeys"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest({",
+							"            url: 'https://ciamlogin.com/' + pm.environment.get(\"tenantId\") + '/oauth2/v2.0/token',",
+							"            method: 'POST',",
+							"            header: 'Content-Type: application/x-www-form-urlencoded',",
+							"            body: {",
+							"                mode: 'urlencoded',",
+							"                urlencoded: [",
+							"                    { key: \"scope\", value: \"https://graph.microsoft.com/.default\", disabled: false },",
+							"                    { key: \"grant_type\", value: \"client_credentials\", disabled: false },",
+							"                    { key: \"client_id\", value: pm.environment.get(\"msGraphClientId\"), disabled: false },",
+							"                    { key: \"client_secret\", value: pm.environment.get(\"msGraphClientSecret\"), disabled: false }",
+							"                ]",
+							"            }",
+							"        }, function (err, res) {",
+							"            if (err) {",
+							"                console.log(err);",
+							"            } else {",
+							"                let resJson = res.json();",
+							"                pm.environment.set(\"bearerTokenExpiresOn\", resJson.expires_on);",
+							"                pm.environment.set(\"bearerToken\", resJson.access_token);",
+							"            }",
+							"        });"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tenant related",
+			"item": [
+				{
+					"name": "/common/SAS/BeginAuth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/SAS/BeginAuth",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"SAS",
+								"BeginAuth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/SAS/ProcessAuth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/SAS/ProcessAuth",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"SAS",
+								"ProcessAuth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/SSPR/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/SSPR/",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"SSPR",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/devicecodestatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/devicecodestatus",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"devicecodestatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/login/telemetry",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/login/telemetry",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"login",
+								"telemetry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/handlers/watson",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/handlers/watson",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"handlers",
+								"watson"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/instrumentation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/common/instrumentation",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"common",
+								"instrumentation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/getrecoverycredentialtype",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/getrecoverycredentialtype",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"getrecoverycredentialtype"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/GetOneTimeCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/GetOneTimeCode",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"GetOneTimeCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/debugmode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/debugmode",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"debugmode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/fidoauthorize",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/fidoauthorize",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"fidoauthorize"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/PIA/EndAuth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/PIA/EndAuth",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"PIA",
+								"EndAuth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/webbridgereprocess",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/webbridgereprocess",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"webbridgereprocess"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/common/canary/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{domain}}/{{tenantName}}/canary/",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{tenantName}}",
+								"canary",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest({",
+							"            url: 'https://ciamlogin.com/' + pm.environment.get(\"tenantId\") + '/oauth2/v2.0/token',",
+							"            method: 'POST',",
+							"            header: 'Content-Type: application/x-www-form-urlencoded',",
+							"            body: {",
+							"                mode: 'urlencoded',",
+							"                urlencoded: [",
+							"                    { key: \"scope\", value: \"https://graph.microsoft.com/.default\", disabled: false },",
+							"                    { key: \"grant_type\", value: \"client_credentials\", disabled: false },",
+							"                    { key: \"client_id\", value: pm.variables.get(\"appId\"), disabled: false },",
+							"                    { key: \"client_secret\", value: pm.variables.get(\"appSecret\"), disabled: false }",
+							"                ]",
+							"            }",
+							"        }, function (err, res) {",
+							"            if (err) {",
+							"                console.log(err);",
+							"            } else {",
+							"                let resJson = res.json();",
+							"                pm.variables.set(\"bearerTokenExpiresOn\", resJson.expires_on);",
+							"                pm.variables.set(\"bearerToken\", resJson.access_token);",
+							"            }",
+							"        });"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "ciamlogin.com",
+			"type": "string"
+		},
+		{
+			"key": "scheme",
+			"value": "https",
+			"type": "string"
+		},
+		{
+			"key": "tenantName",
+			"value": "contoso0781",
+			"type": "string"
+		},
+		{
+			"key": "tenantId",
+			"value": "bb52b4b4-a496-472a-8b45-c08f1a8bdbb8",
+			"type": "string"
+		},
+		{
+			"key": "appId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "appSecret",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
